@@ -1,12 +1,14 @@
-# Set the base image to use for subsequent instructions
+# Set the base image
 FROM ubuntu
 
-# Set the working directory inside the container
+# Set the working directory
 WORKDIR /usr/src
 
-# Copy any source file(s) required for the action
+# Copy the entrypoint script into the container
 COPY entrypoint.sh .
+
+# Ensure the entrypoint script is executable
 RUN chmod +x ./entrypoint.sh
 
-# Configure the container to be run as an executable
+# Set the entrypoint
 ENTRYPOINT ["/usr/src/entrypoint.sh"]

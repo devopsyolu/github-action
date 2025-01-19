@@ -13,9 +13,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Hello World Action
+        id: test-step-action
         uses: ./ # Assuming action is in the root of the repository
         with:
           who-to-greet: 'Docker Enthusiast'
 
       - name: Display Output
-        run: echo "The greeting time is ${{ steps.test-action.outputs.time }}"
+        run: echo "The greeting time is ${{ steps.test-step-action.outputs.time }}"

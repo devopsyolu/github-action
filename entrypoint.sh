@@ -1,13 +1,13 @@
-#!/bin/sh -l
+#!/bin/bash
 
-# Use INPUT_<INPUT_NAME> to get the value of an input
-GREETING="Hello, $INPUT_who-to-greet!"
+# Get the input from the environment variable
+NAME="$GREETING_INPUT"
 
-# Use workflow commands to do things like set debug messages
-echo "$GREETING"
+# Log the greeting
+echo "Hello, $NAME!"
 
-# Write outputs to the $GITHUB_OUTPUT file
-echo "$(date)"
-echo "time=$(date)" >>"$GITHUB_OUTPUT"
+# Record the current time
+TIME=$(date)
 
-exit 0
+# Set the output for the action
+echo "time=$TIME" >> "$GITHUB_OUTPUT"
