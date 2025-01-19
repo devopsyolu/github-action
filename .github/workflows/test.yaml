@@ -1,0 +1,21 @@
+name: 'Greet Action Test'
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Run Hello World Action
+        uses: ./ # Assuming action is in the root of the repository
+        with:
+          who-to-greet: 'Docker Enthusiast'
+
+      - name: Display Output
+        run: echo "The greeting time is ${{ steps.test-action.outputs.time }}"
